@@ -1,11 +1,11 @@
 source 'http://ruby.taobao.org'
 
 gem 'execjs'
-gem 'therubyracer'
+# gem 'therubyracer'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.13'
 gem "rails_autolink", ">= 1.0.4"
 
 # Mongoid 辅助插件
@@ -53,7 +53,7 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  # gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails'

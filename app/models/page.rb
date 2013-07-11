@@ -20,7 +20,7 @@ class Page
   
   attr_accessible :title, :body, :slug
     
-  index :slug
+  index({:slug => 1})
   
   #validates
   validates_format_of :slug, :with => /^[a-z0-9\-_]+$/

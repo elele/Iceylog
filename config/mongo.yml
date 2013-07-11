@@ -6,15 +6,12 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: elele-dev
+  database: elele_development
 
-test:
-  <<: *defaults
-  database: elele-test
 
 # set these environment variables on your prod server
 production:
   <<: *defaults
-  database: elele-pro
+  database: elele_pro
   # username:
   # password:

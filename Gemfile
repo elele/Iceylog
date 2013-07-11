@@ -9,16 +9,16 @@ gem 'rails', '3.2.13'
 gem "rails_autolink", ">= 1.0.4"
 
 # Mongoid 辅助插件
-gem "mongoid", "2.4.3"
-gem "bson_ext", "1.5.2"
-gem 'mongo-rails-instrumentation','0.2.4'
-gem 'mongoid_auto_increment_id', "0.4.0"
-gem 'mongoid_rails_migrations', '~> 0.0.14'
+gem "mongoid", "3.1.4"
+# gem "bson_ext", "1.5.2"
+# gem 'mongo-rails-instrumentation','0.3.0'
+gem 'mongoid_auto_increment_id', "0.6.1"
+gem 'mongoid_rails_migrations', '1.0.1'
 
 # 分页
 # 分页
 gem 'will_paginate', '3.0.2'
-gem 'will_paginate_mongoid', '~> 1.0.2'
+gem 'will_paginate_mongoid', '~> 1.1.0'
 # gem 'bootstrap-will_paginate', '0.0.3'
 
 # Markdown 格式
@@ -30,8 +30,8 @@ gem "pygments.rb", '~> 0.2.4'
 gem "settingslogic", "~> 2.0.6"
   
 # 上传组件
-gem 'carrierwave', '0.5.7'
-gem 'carrierwave-mongoid', '0.1.2', :require => 'carrierwave/mongoid'
+gem 'carrierwave', '0.9.0'
+gem 'carrierwave-mongoid', '0.6.1', :require => 'carrierwave/mongoid'
 gem 'mini_magick','3.3'
 #gem 'carrierwave-upyun', '0.1.3'
 
@@ -41,7 +41,7 @@ gem 'quiet_assets', :git => 'git://github.com/AgilionApps/quiet_assets.git'
 
 
 # 表单 last commit: 2011-12-03
-gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
+gem 'simple_form' , '2.1.0'#, :git => "git://github.com/plataformatec/simple_form.git"
 gem 'bootstrap-rails', :require => 'bootstrap-rails', :git => 'git://github.com/xdite/bootstrap-rails.git'
 
 # Gems used only for assets and not required
@@ -56,7 +56,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails','2.1.4'
 
 #table_builder
 gem "watu_table_builder", :require => "table_builder"
@@ -69,6 +69,10 @@ gem "watu_table_builder", :require => "table_builder"
 
 # Use unicorn as the app server
 gem 'unicorn'
+
+group :development do 
+	gem 'thin'
+end
 
 # Deploy with Capistrano
 # gem 'capistrano'

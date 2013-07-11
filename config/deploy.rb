@@ -2,7 +2,7 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 # require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
-# require 'mina/rvm'    # for rvm support. (http://rvm.io)
+require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -10,11 +10,11 @@ require 'mina/git'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'elele.me'
+set :domain, 'root@vps'
 set :deploy_to, '/var/www/elele.me'
-set :repository, 'git@github.com:elele/Iceylog.git'
+set :repository, 'git://github.com/elele/Iceylog.git'
 set :branch, 'master'
-
+set :rvm_path, "/usr/local/rvm/scripts/rvm"
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/mongo.yml', 'log']
@@ -22,9 +22,9 @@ set :shared_paths, ['config/mongo.yml', 'log']
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
 #   set :port, '30000'     # SSH port number.
-set :user , 'root'
-set :port , '22'
-
+# set :user , 'root'
+# set :port , '22'
+set :identity_file,"/Users/9jsc/.ssh/id_rsa"
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
@@ -47,7 +47,8 @@ task :setup => :environment do
 	queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
 	queue! %[touch "#{deploy_to}/shared/config/mongo.yml"]
-	queue  %[-----> Be sure to edit 'shared/config/mongo.yml'.]
+	queue  %[echo "-----> Be sure to edit 'shared/config/mongo.yml'."]
+	# queue  %[source]
 end
 
 desc "Deploys the current version to the server."
@@ -57,41 +58,39 @@ task :deploy => :environment do
 		# instance of your project.
 		invoke :'git:clone'
 		invoke :'deploy:link_shared_paths'
+		queue 'echo "path=$PATH"'
 		invoke :'bundle:install'
 		# invoke :'rails:db_migrate'
 		invoke :'rails:assets_precompile'
-
+		invoke :'unicorn_restart'
 
 		to :launch do
-			invoke :'unicorn:restart'
+			
+
 		end
 	end
 end
 
 desc "unicorn"
-task :unicorn => :environment do
-	start do
-		queue "cd #{current_path} && unicorn_rails -c #{current_path}/config/unicorn.rb -E production -D"
-	end
-	restart do
-		queue "kill -USR2 `cat #{current_path}/tmp/pids/unicorn.pid`"
-	end
-	stop do
-		queue "kill -QUIT `cat #{current_path}/tmp/pids/unicorn.pid`"
-	end
+task :unicorn_start do
+	queue "cd #{current_path} && unicorn_rails -c #{current_path}/config/unicorn.rb -E production -D"	
 end
+task :unicorn_restart	do
+	queue "kill -USR2 `cat #{current_path}/tmp/pids/unicorn.pid`"
+end
+task :unicorn_stop do
+	queue "kill -QUIT `cat #{current_path}/tmp/pids/unicorn.pid`"
+end 
 
 desc "nginx"
-task :nginx => :environment do
-	start do
-		queue '/etc/init.d/nginx start'
-	end
-	restart do
-		queue '/etc/init.d/nginx restart'
-	end
-	stop do
-		queue '/etc/init.d/nginx stop'
-	end
+task :nginx_start  do
+	queue '/etc/init.d/nginx start'
+end
+task	:nginx_restart do
+	queue '/etc/init.d/nginx restart'
+end
+task :nginx_stop do
+	queue '/etc/init.d/nginx stop'
 end
 
 # For help in making your deploy script, see the Mina documentation:

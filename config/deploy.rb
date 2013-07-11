@@ -62,7 +62,7 @@ task :deploy => :environment do
 		invoke :'bundle:install'
 		# invoke :'rails:db_migrate'
 		invoke :'rails:assets_precompile'
-		invoke :'unicorn_restart'
+		# invoke :'unicorn_restart'
 
 		to :launch do
 			

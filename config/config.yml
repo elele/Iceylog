@@ -1,12 +1,12 @@
 defaults: &defaults
-  app_name: "Iceylog"
-  foot_html: "&copy; Iceylog."
+  app_name: "elele"
+  foot_html: "&copy; elele."
   domain: "127.0.0.1:3000"    
-  disqus_shortname: "iceskysl"
-  duoshuo_shortname: "iceskysl"
+  disqus_shortname: "elele"
+  duoshuo_shortname: "elele"
   google_analytics_key: "UA-31513752-1"
-  email_sender: 'no-reply@iceskysl.com'
-  twitter_id: "iceskysl"
+  email_sender: 'elele.cool@gmail.com'
+  twitter_id: "elele"
 
 development:
   <<: *defaults

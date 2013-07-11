@@ -1,18 +1,26 @@
+
+
+# development:
+#   sessions:
+#     default:
+#       database: elele_development
+#         hosts:
+#           - localhost:27017
+# test:
+#   sessions:
+#     default:
+#       database: elele_development
+#         hosts:
+#           - localhost:27017
+# production:
+#   sessions:
+#     default:
+#       database: elele_pro
+#         hosts:
+#           - localhost:27017
 development:
-  host: localhost
-  database: elele_development
-
-test:
-  host: localhost
-  database: elele_test
-
-# set these environment variables on your prod server
-production:
-  host: localhost
-  port: 27017
-  database: elele_pro
-  # slaves:
-  #   - host: slave1.local
-  #     port: 27018
-  #   - host: slave2.local
-  #     port: 27019
+  sessions:
+    default:
+      database: elele_development
+      hosts:
+        - localhost:27017

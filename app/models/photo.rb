@@ -10,7 +10,7 @@ class Photo
 
  
 
-  attr_accessible :image
+  # attr_accessible :image
 
   # 封面图
   mount_uploader :image, PhotoUploader

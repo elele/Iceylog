@@ -9,9 +9,9 @@ Iceylog::Application.routes.draw do
       get :feed
     end
   end
-  match "posts/category/:id" => "posts#category", :as => :category_posts
-  match "posts/tag/:tag" => "posts#tag", :as => :tag_posts
-  match "posts/month/:month" => "posts#month", :as => :month_posts
+  get "posts/category/:id" => "posts#category", :as => :category_posts
+  get "posts/tag/:tag" => "posts#tag", :as => :tag_posts
+  get "posts/month/:month" => "posts#month", :as => :month_posts
   
   resources :pages, :path => "page" do
     collection do
@@ -19,7 +19,7 @@ Iceylog::Application.routes.draw do
     end
   end
   
-  match "/search" => "search#index", :as => :search
+  get "/search" => "search#index", :as => :search
     
   namespace :cpanel do
     root :to => "home#index"

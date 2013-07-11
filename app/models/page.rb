@@ -18,12 +18,12 @@ class Page
   field :read_count, :type => Integer, :default => 0
 
   
-  attr_accessible :title, :body, :slug
+  # attr_accessible :title, :body, :slug
     
-  index :slug
+  index({slug: 1})
   
   #validates
-  validates_format_of :slug, :with => /^[a-z0-9\-_]+$/
+  validates_format_of :slug, :with => /\A[a-z0-9\-_]+\z/
   validates_uniqueness_of :slug
   
   before_save :markdown_for_body_html

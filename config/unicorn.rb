@@ -17,7 +17,7 @@ stdout_path "#{Rails.root}/log/unicorn.log"
 listen Rails.root + "/tmp/sockets/unicorn.sock", :backlog => 64
 listen 8100, :tcp_nopush => false
 
-worker_processes 2
+worker_processes 1
 timeout 120
 
 if GC.respond_to?(:copy_on_write_friendly=)

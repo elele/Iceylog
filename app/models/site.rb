@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # coding: utf-8
 class Site
   include Mongoid::Document
@@ -13,7 +15,8 @@ class Site
 
   validates_presence_of :url, :name 
   
-  index :url
+  # index :url
+  index({ url: 1 })
 
   before_validation :fix_urls, :check_uniq
   def fix_urls

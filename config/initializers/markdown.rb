@@ -1,6 +1,6 @@
 # coding: utf-8
 require 'rails_autolink'
-require 'iconv'
+# require 'iconv'
 module Redcarpet
   module Render
     class HTMLwithSyntaxHighlight < HTML

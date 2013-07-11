@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # coding: utf-8
 class Post
   include Mongoid::Document
@@ -23,13 +25,16 @@ class Post
   counter_cache :name => :category, :inverse_of => :posts
     
   #index
-  index :tags
-  index :category_id
-  index :state
+  # index :tags
+  # index :category_id
+  # index :state
+  index({tags: 1})
+  index({category_id: 1})
+  index({state: 1})
   
   # counter :hits, :default => 0
   
-  attr_accessible :title, :body, :tag_list,:category_id,:created_at
+  # attr_accessible :title, :body, :tag_list,:category_id,:created_at
   attr_accessor :tag_list
   
   validates_presence_of :title,:category_id

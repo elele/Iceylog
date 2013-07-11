@@ -6,15 +6,15 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: iceylog-dev
+  database: elele-dev
 
 test:
   <<: *defaults
-  database: iceylog-test
+  database: elele-test
 
 # set these environment variables on your prod server
 production:
   <<: *defaults
-  database: iceylog-pro
+  database: elele-pro
   # username:
   # password:

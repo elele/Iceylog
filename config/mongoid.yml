@@ -1,10 +1,10 @@
 development:
   host: localhost
-  database: iceylog_development
+  database: elele_development
 
 test:
   host: localhost
-  database: iceylog_test
+  database: elele_test
 
 # set these environment variables on your prod server
 production:

@@ -61,7 +61,7 @@ task :deploy => :environment do
 		queue 'echo "path=$PATH"'
 		invoke :'bundle:install'
 		# invoke :'rails:db_migrate'
-		# invoke :'rails:assets_precompile'
+		invoke :'rails:assets_precompile'
 		invoke :'unicorn_restart'
 
 		to :launch do

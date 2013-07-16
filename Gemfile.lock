@@ -192,7 +192,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails_autolink (>= 1.0.4)
   redcarpet (~> 2.0.0)
-  sass-rails (~> 3.2.3)
+  sass-rails (~> 3.2.5)
   settingslogic (~> 2.0.6)
   simple_form (= 2.1.0)
   thin

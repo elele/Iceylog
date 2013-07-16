@@ -20,9 +20,10 @@ class Post
   field :tags, :type => Array, :default => []
   field :comments_count, :type => Integer, :default => 0
   field :read_count, :type => Integer, :default => 0
-  
+
+
   belongs_to :category
-  belongs_to :user
+  # belongs_to :user
   counter_cache :name => :category, :inverse_of => :posts
     
   #index

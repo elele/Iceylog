@@ -72,14 +72,14 @@ task :deploy => :environment do
 end
 
 desc "unicorn"
-task :unicorn_start do
-	queue "cd #{current_path} && unicorn_rails -c #{current_path}/config/unicorn.rb -E production -D"	
+task :unicorn_start => :environment do
+	queue "cd #{deploy_to}/#{current_path} && unicorn_rails -c #{deploy_to}/#{current_path}/config/unicorn.rb -E production -D"	
 end
 task :unicorn_restart	do
-	queue "kill -USR2 `cat #{current_path}/tmp/pids/unicorn.pid`"
+	queue "kill -USR2 `cat #{deploy_to}/#{current_path}/tmp/pids/unicorn.pid`"
 end
 task :unicorn_stop do
-	queue "kill -QUIT `cat #{current_path}/tmp/pids/unicorn.pid`"
+	queue "kill -QUIT `cat #{deploy_to}/#{current_path}/tmp/pids/unicorn.pid`"
 end 
 
 desc "nginx"

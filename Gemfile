@@ -43,11 +43,11 @@ gem 'quiet_assets', :git => 'git://github.com/AgilionApps/quiet_assets.git'
 # 表单 last commit: 2011-12-03
 gem 'simple_form' , '2.1.0'#, :git => "git://github.com/plataformatec/simple_form.git"
 gem 'bootstrap-rails', :require => 'bootstrap-rails', :git => 'git://github.com/xdite/bootstrap-rails.git'
-
+gem 'sass-rails',   '~> 3.2.5'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.5'
+ 
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

@@ -21,7 +21,7 @@ Iceylog::Application.configure do
   config.assets.digest = true
   
   config.assets.js_compressor  = :uglifier
-  config.assets.css_compressor = :scss
+  # config.assets.css_compressor = :scss
   config.assets.precompile += %w(application.css cpanel.css app.js posts.js)
 
   

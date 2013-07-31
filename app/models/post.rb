@@ -20,6 +20,7 @@ class Post
   field :tags, :type => Array, :default => []
   field :comments_count, :type => Integer, :default => 0
   field :read_count, :type => Integer, :default => 0
+  field :remote_id , :type => Integer
 
 
   belongs_to :category

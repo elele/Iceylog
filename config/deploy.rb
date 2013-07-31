@@ -62,11 +62,10 @@ task :deploy => :environment do
 		invoke :'bundle:install'
 		# invoke :'rails:db_migrate'
 		invoke :'rails:assets_precompile'
-		invoke :'unicorn_restart'
+		
 
 		to :launch do
-			
-
+			invoke :'unicorn_restart'
 		end
 	end
 end
@@ -76,7 +75,9 @@ task :unicorn_start => :environment do
 	queue "cd #{deploy_to}/#{current_path} && unicorn_rails -c #{deploy_to}/#{current_path}/config/unicorn.rb -E production -D"	
 end
 task :unicorn_restart	do
-	queue "kill -USR2 `cat #{deploy_to}/#{current_path}/tmp/pids/unicorn.pid`"
+	# queue "kill -USR2 `cat #{deploy_to}/#{current_path}/tmp/pids/unicorn.pid`"
+	invoke :'unicorn_stop'
+	invoke :'unicorn_start'
 end
 task :unicorn_stop do
 	queue "kill -QUIT `cat #{deploy_to}/#{current_path}/tmp/pids/unicorn.pid`"

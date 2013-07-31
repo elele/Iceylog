@@ -39,6 +39,8 @@ gem 'mini_magick','3.3'
 # 禁用 assets 日志
 gem 'quiet_assets', :git => 'git://github.com/AgilionApps/quiet_assets.git'
 
+gem "mechanize"
+gem 'whenever', :require => false
 
 # 表单 last commit: 2011-12-03
 gem 'simple_form' , '2.1.0'#, :git => "git://github.com/plataformatec/simple_form.git"
